@@ -11,8 +11,33 @@ const query = async () =>{
    
     //get all users
 
-    const user = await db.User.findOne();
-    console.log("All users:", JSON.stringify(user, null, 2));
+    // const user = await db.User.findOne();
+    // console.log("All users:", JSON.stringify(user, null, 2));
+
+    //create user
+    // const user = await db.User.create({
+    //     id: 7,
+    //     firstName: "Alex",
+    //     lastName: "Vee",
+    //     departmentId: 2,
+    //     projectId: 4,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date(),
+    // })
+    // console.log("All users:", JSON.stringify(user, null, 2));
+
+    //update user
+    // const user = await db.User.update({ firstName: 'Jay'},
+    // {
+    //     where: {
+    //         id:7
+    //     }
+    // }
+    // );
+    const user =await db.User.findOne({where:{id:7}})
+    console.log(user);
+
+    
 
     //create department
     // const department = await db.Department.create({
