@@ -4,22 +4,24 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Projects', {
       id: {
+        type: Sequelize.INTEGER,
+        autoIncrement:true,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
       },
       projectName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
+      departmentId: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model: 'Departments',
+          key: 'id'
+        }
       },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      }
+  
     });
   },
   async down(queryInterface, Sequelize) {

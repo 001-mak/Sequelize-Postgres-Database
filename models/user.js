@@ -1,64 +1,51 @@
-'use strict';
-const Sequelize = require('sequelize');
+"use strict";
+const Sequelize = require("sequelize");
 
-const Project = require('./project');
-const Department = require('./department');
-const { Model } = require('sequelize');
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-   class User extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-
-
-    static associate(models) {
-  
-    }
+    static associate(models) {}
   }
-  User.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
-    firstName: {
-      type: Sequelize.STRING
-    },
-    lastName: {
-      type: Sequelize.STRING
-    },
-    departmentId: {
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-          model: 'Departments',
-          key: 'id'
-        }
+  User.init(
+    {
+      id: {
+        type: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
+      firstName: {
+        type: Sequelize.STRING,
+      },
+      lastName: {
+        type: Sequelize.STRING,
+      },
+      departmentId: {
+        type: Sequelize.UUIDV4,
+        allowNull: false,
+        references: {
+          model: "Departments",
+          key: "id",
+        },
       },
       projectId: {
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-          model: 'Projects',
-          key: 'id'
-        }
-      },
-      createdAt: {
+        type: Sequelize.UUIDV4,
         allowNull: false,
-        type: Sequelize.DATE
+        references: {
+          model: "Projects",
+          key: "id",
+        },
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    ,
-  }, {
-    sequelize,
-    modelName: 'User',
-    tableName: 'Users',
-  });
+    },
+    {
+      sequelize,
+      modelName: "User",
+      tableName: "Users",
+    }
+  );
   return User;
 };

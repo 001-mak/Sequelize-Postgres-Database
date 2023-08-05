@@ -1,12 +1,9 @@
 'use strict';
 const { Model } = require('sequelize');
-const Sequelize = require('sequelize')
-
-// const User = require('./user')
-// const Project = require('./project')
+const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Department extends Model {
+  class Skill extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -16,24 +13,20 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Department.init({
+  Skill.init({
     id: {
       type: Sequelize.UUIDV4, //UUIDV4 for generating random ID
       allowNull: false,
       primaryKey: true,
     },
-    departmentName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    phone: {
+    skillName: {
       type: Sequelize.STRING,
       allowNull: false,
     },
   }, {
     sequelize,
-    modelName: 'Department',
-    tableName: 'Departments',
+    modelName: 'Skill',
+    tableName: 'Skills',
   });
-  return Department;
+  return Skill;
 };
