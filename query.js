@@ -6,8 +6,10 @@ const query = async () =>{
 
     //get all projects
     
-    // const projects = await db.Project.findAll();
-    // console.log("All projects:", JSON.stringify(projects, null, 2));
+    const projects = await db.User.findAll({
+        attributes:['firstName', 'id']
+    });
+    console.log("All projects:", JSON.stringify(projects, null, 2));
    
     //get all users
 
@@ -34,8 +36,8 @@ const query = async () =>{
     //     }
     // }
     // );
-    const user =await db.User.findOne({where:{id:7}})
-    console.log(user);
+    // const user =await db.User.findOne({where:{id:7}})
+    // console.log(user);
 
     
 
